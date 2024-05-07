@@ -4,8 +4,15 @@ import { Root, Submit } from '@radix-ui/react-form'
 import { Field } from '../ui/Field'
 import { Input } from '../ui/Input'
 import { Select } from '../ui/Select'
+import { Button } from '../ui/Button'
 
-type NewEditProductProps = Product & {
+type NewEditProductProps = {
+  name?: Product['name']
+  sizes?: Product['sizes']
+  type?: Product['type']
+  features?: Product['features']
+  brand?: Product['brand']
+  id?: Product['id']
   onSave: () => void
 }
 
@@ -45,7 +52,7 @@ export const NewEditProduct = ({
       </>
     ) : null}
     <Submit asChild>
-      <button onClick={onSave}>save</button>
+      <Button onClick={onSave}>save</Button>
     </Submit>
   </Root>
 )
