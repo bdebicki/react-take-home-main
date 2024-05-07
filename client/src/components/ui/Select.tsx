@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 
 type SelectProps = {
-  value: any
+  value?: any
   options?: Array<{
     label: string
     value: string
@@ -9,6 +9,8 @@ type SelectProps = {
   onChange?: () => void
 }
 
-export const Select = ({ value, options, onChange }: SelectProps) => (
-  <p>{value}</p>
+export const Select = forwardRef<HTMLInputElement, SelectProps>(
+  ({ value, options, onChange }, ref) => <p ref={ref}>{value}</p>
 )
+
+Select.displayName = 'Select'

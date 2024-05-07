@@ -10,8 +10,6 @@ export const ProductList = () => {
     queryFn: fetchProducts
   })
 
-  console.log(data, isLoading)
-
   return isLoading ? (
     <p>Loading in progress...</p>
   ) : (
