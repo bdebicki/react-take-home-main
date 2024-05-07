@@ -1,11 +1,13 @@
 const z = require("zod");
 
 const express = require("express");
+const cors = require("cors")
 
 const PORT = process.env.PORT || 8080;
 
 const app = express();
 
+app.use(cors())
 app.use(express.json());
 
 const footwearSizes = z.enum(["US 7", "US 8", "US 9", "US 10"]);
