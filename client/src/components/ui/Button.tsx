@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { MouseEvent } from 'react'
 
-type ButtonProps = {
+type Props = {
   children: string
-  onClick: () => void
+  onClick: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
-export const Button = ({ children, onClick }: ButtonProps) => {
+export const Button = ({ children, onClick }: Props) => {
   return <button onClick={onClick}>{children}</button>
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import type { Product } from '../../types/product'
 import { NewEditProduct } from './NewEditProduct'
 
-type ProductItemProps = Product
+type Props = Product
 
 export const ProductItem = ({
   id,
@@ -11,7 +11,7 @@ export const ProductItem = ({
   type,
   sizes,
   features
-}: ProductItemProps) => {
+}: Props) => {
   const [isEditMode, setIsEditMode] = useState(false)
 
   const handleEdit = () => {

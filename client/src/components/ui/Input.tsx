@@ -1,11 +1,11 @@
 import React, { forwardRef } from 'react'
 
-type InputProps = {
+type Props = {
   value?: string
   onChange?: () => void
 }
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(
+export const Input = forwardRef<HTMLInputElement, Props>(
   ({ value, onChange }, ref) => (
     <input type="text" value={value} onChange={onChange} ref={ref} />
   )

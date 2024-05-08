@@ -1,12 +1,12 @@
 import React, { ReactElement } from 'react'
 import * as Form from '@radix-ui/react-form'
 
-type FieldProps = {
+type Props = {
   label: string
   children: ReactElement
 }
 
-export const Field = ({ label, children }: FieldProps) => (
+export const Field = ({ label, children }: Props) => (
   <Form.Field name={label.replace(' ', '-').toLowerCase()}>
     <Form.Label>{label}</Form.Label>
     <Form.Control asChild>{children}</Form.Control>
