@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Button } from '../ui/Button'
 import { ProductForm } from '../productForm/ProductForm'
-import { useAddProduct } from '../productList/apiActions'
+import { useAddProduct } from '../../api/apiActions'
 
 type Props = {
   onAdd: () => void

@@ -1,7 +1,7 @@
 import React from 'react'
 import { ProductList } from '../productList/ProductList'
 import { NewProduct } from '../newProduct/NewProduct'
-import { useProductList } from '../productList/apiActions'
+import { useProductList } from '../../api/apiActions'
 import { Headline } from '../ui/Headline'
 
 export const ListingPage = () => {
@@ -12,7 +12,7 @@ export const ListingPage = () => {
       <Headline>Product list</Headline>
       <NewProduct onAdd={refetch} />
       <hr />
-      <ProductList isLoading={isLoading} list={productList} />
+      <ProductList isLoading={isLoading} list={productList} onEdit={refetch} />
     </>
   )
 }

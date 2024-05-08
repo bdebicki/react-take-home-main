@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import type { Product } from '../../types/product'
-import { ProductForm } from '../productForm/ProductForm'
+import { EditProduct } from '../editProduct/EditProduct'
 
-type Props = Product
+type Props = Product & {
+  onEdit: () => void
+}
 
 export const ProductItem = ({
   id,
@@ -10,7 +12,8 @@ export const ProductItem = ({
   brand,
   type,
   sizes,
-  features
+  features,
+  onEdit
 }: Props) => {
   const [isEditMode, setIsEditMode] = useState(false)
 
@@ -20,23 +23,28 @@ export const ProductItem = ({
   const handleSave = () => {
     setIsEditMode(false)
   }
+  const handleCancel = () => {
+    setIsEditMode(false)
+  }
 
   if (isEditMode) {
     return (
-      <ProductForm
+      <EditProduct
         onSave={handleSave}
+        onCancel={handleCancel}
         id={id}
         type={type}
         name={name}
         brand={brand}
         sizes={sizes}
         features={features}
+        onAdd={onEdit}
       />
     )
   }
 
   return (
-    <div onClick={handleEdit}>
+    <div onClick={handleEdit} className="border">
       <h2>{name}</h2>
       <h3>{brand}</h3>
       <p>{type}</p>
