@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button } from '../ui/Button'
-import { NewEditProduct } from '../productList/NewEditProduct'
+import { ProductForm } from '../productForm/ProductForm'
 import { useAddProduct } from '../productList/apiActions'
 
 type Props = {
@@ -14,8 +14,11 @@ export const NewProduct = ({ onAdd }: Props) => {
     onAdd()
   })
 
-  const handleClick = () => {
+  const handleShowForm = () => {
     setIsFormVisible(true)
+  }
+  const handleCancel = () => {
+    setIsFormVisible(false)
   }
   const handleSave = () => {
     mutate({
@@ -30,9 +33,13 @@ export const NewProduct = ({ onAdd }: Props) => {
 
   return (
     <section>
-      <Button onClick={handleClick}>Add new product</Button>
+      <Button onClick={handleShowForm}>Add new product</Button>
       {isFormVisible ? (
-        <NewEditProduct onSave={handleSave} isPending={isPending} />
+        <ProductForm
+          onSave={handleSave}
+          onCancel={handleCancel}
+          isPending={isPending}
+        />
       ) : null}
     </section>
   )

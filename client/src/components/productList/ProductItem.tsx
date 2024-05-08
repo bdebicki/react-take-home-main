@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import type { Product } from '../../types/product'
-import { NewEditProduct } from './NewEditProduct'
+import { ProductForm } from '../productForm/ProductForm'
 
 type Props = Product
 
@@ -23,7 +23,7 @@ export const ProductItem = ({
 
   if (isEditMode) {
     return (
-      <NewEditProduct
+      <ProductForm
         onSave={handleSave}
         id={id}
         type={type}

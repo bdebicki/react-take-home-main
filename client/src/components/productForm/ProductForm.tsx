@@ -14,10 +14,11 @@ type Props = {
   brand?: Product['brand']
   id?: Product['id']
   onSave: () => void
+  onCancel: () => void
   isPending?: boolean
 }
 
-export const NewEditProduct = ({
+export const ProductForm = ({
   name,
   sizes,
   type,
@@ -25,15 +26,20 @@ export const NewEditProduct = ({
   brand,
   id,
   onSave,
+  onCancel,
   isPending
 }: Props) => {
   const handleSave = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     onSave()
   }
+  const handleCancel = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    onCancel()
+  }
 
   return (
-    <Root>
+    <Root className="bg-gray-50">
       <Field label="Product name">
         <Input value={name} />
       </Field>
@@ -60,6 +66,9 @@ export const NewEditProduct = ({
         </>
       ) : null}
       <Button onClick={handleSave}>{isPending ? 'Saving' : 'Save'}</Button>
+      <Button type="secondary" onClick={handleCancel}>
+        Cancel
+      </Button>
     </Root>
   )
 }
