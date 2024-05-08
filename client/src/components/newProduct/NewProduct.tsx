@@ -33,14 +33,15 @@ export const NewProduct = ({ onAdd }: Props) => {
 
   return (
     <section>
-      <Button onClick={handleShowForm}>Add new product</Button>
       {isFormVisible ? (
         <ProductForm
           onSave={handleSave}
           onCancel={handleCancel}
           isPending={isPending}
         />
-      ) : null}
+      ) : (
+        <Button onClick={handleShowForm}>Add new product</Button>
+      )}
     </section>
   )
 }
