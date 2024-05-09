@@ -4,6 +4,7 @@ import classnames from 'classnames'
 type Props = {
   children: string
   level?: 1 | 2 | 3
+  className?: string
 }
 
 const levelToSizeMap = {
@@ -12,9 +13,13 @@ const levelToSizeMap = {
   3: 'text-xl font-bold'
 }
 
-export const Headline = ({ children, level = 1 }: Props) => {
+export const Headline = ({ children, level = 1, className }: Props) => {
   const Component = `h${level}` as const
-  const classNames = classnames('text-gray-900', levelToSizeMap[`${level}`])
+  const classNames = classnames(
+    'text-gray-900',
+    levelToSizeMap[`${level}`],
+    className
+  )
 
   return <Component className={classNames}>{children}</Component>
 }

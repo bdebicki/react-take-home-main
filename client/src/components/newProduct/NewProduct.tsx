@@ -1,25 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Button } from '../ui/Button'
 import { ProductForm } from '../productForm/ProductForm'
 import { useAddProduct } from '../../api/apiActions'
+import { Dialog } from '../ui/Dialog'
 
 type Props = {
   onAdd: () => void
 }
 
 export const NewProduct = ({ onAdd }: Props) => {
-  const [isFormVisible, setIsFormVisible] = useState(false)
   const { isPending, mutate } = useAddProduct(() => {
-    setIsFormVisible(false)
     onAdd()
   })
 
-  const handleShowForm = () => {
-    setIsFormVisible(true)
-  }
-  const handleCancel = () => {
-    setIsFormVisible(false)
-  }
   const handleSave = () => {
     mutate({
       name: `boczek-${new Date()}`,
@@ -32,15 +25,13 @@ export const NewProduct = ({ onAdd }: Props) => {
   }
 
   return (
-    <>
-      <Button onClick={handleShowForm}>Add new product</Button>
-      {isFormVisible ? (
-        <ProductForm
-          onSave={handleSave}
-          onCancel={handleCancel}
-          isPending={isPending}
-        />
-      ) : null}
-    </>
+    <Dialog
+      title="Add new product"
+      trigger={<Button>Add new product</Button>}
+      primaryAction={handleSave}
+      primaryBtnLabel={isPending ? 'Saving...' : 'Add product'}
+    >
+      <ProductForm />
+    </Dialog>
   )
 }

@@ -1,10 +1,9 @@
-import React, { MouseEvent } from 'react'
+import React from 'react'
 import type { Product } from '../../types/product'
-import { Root, Submit } from '@radix-ui/react-form'
+import { Root } from '@radix-ui/react-form'
 import { Field } from '../ui/Field'
 import { Input } from '../ui/Input'
 import { Select } from '../ui/Select'
-import { Button } from '../ui/Button'
 
 type Props = {
   name?: Product['name']
@@ -12,34 +11,11 @@ type Props = {
   type?: Product['type']
   features?: Product['features']
   brand?: Product['brand']
-  id?: Product['id']
-  onSave: () => void
-  onCancel: () => void
-  isPending?: boolean
 }
 
-export const ProductForm = ({
-  name,
-  sizes,
-  type,
-  features,
-  brand,
-  id,
-  onSave,
-  onCancel,
-  isPending
-}: Props) => {
-  const handleSave = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault()
-    onSave()
-  }
-  const handleCancel = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault()
-    onCancel()
-  }
-
+export const ProductForm = ({ name, sizes, type, features, brand }: Props) => {
   return (
-    <Root className="absolute left-0 top-0 bg-white">
+    <Root>
       <Field label="Product name">
         <Input value={name} />
       </Field>
@@ -65,10 +41,6 @@ export const ProductForm = ({
           ) : null}
         </>
       ) : null}
-      <Button onClick={handleSave}>{isPending ? 'Saving' : 'Save'}</Button>
-      <Button type="secondary" onClick={handleCancel}>
-        Cancel
-      </Button>
     </Root>
   )
 }
