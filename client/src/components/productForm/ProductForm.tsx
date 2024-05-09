@@ -39,7 +39,7 @@ export const ProductForm = ({
   }
 
   return (
-    <Root className="bg-gray-50">
+    <Root className="absolute left-0 top-0 bg-white">
       <Field label="Product name">
         <Input value={name} />
       </Field>

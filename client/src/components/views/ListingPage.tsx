@@ -10,7 +10,7 @@ export const ListingPage = () => {
 
   return (
     <>
-      <header className="sticky top-0 bg-gray-50/30 py-4 backdrop-blur-sm">
+      <header className="sticky top-0 z-10 mb-8 bg-gray-50/30 py-4 backdrop-blur-sm">
         <LayoutCenterer className="flex flex-row items-end justify-between">
           <Headline>Product list</Headline>
           <NewProduct onAdd={refetch} />

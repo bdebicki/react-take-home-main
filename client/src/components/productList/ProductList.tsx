@@ -9,20 +9,24 @@ type Props = {
 }
 
 export const ProductList = ({ isLoading, list, onEdit }: Props) => {
-  return isLoading ? (
-    <p>Loading in progress...</p>
-  ) : (
-    list.map(({ id, brand, name, type, sizes, features }: Product) => (
-      <ProductItem
-        onEdit={onEdit}
-        id={id}
-        key={id}
-        name={name}
-        brand={brand}
-        type={type}
-        sizes={sizes}
-        features={features}
-      />
-    ))
+  return (
+    <div className="shadow-3xl overflow-hidden rounded-3xl border border-gray-100 bg-white p-6">
+      {isLoading ? (
+        <p>Loading in progress...</p>
+      ) : (
+        list.map(({ id, brand, name, type, sizes, features }: Product) => (
+          <ProductItem
+            onEdit={onEdit}
+            id={id}
+            key={id}
+            name={name}
+            brand={brand}
+            type={type}
+            sizes={sizes}
+            features={features}
+          />
+        ))
+      )}
+    </div>
   )
 }
