@@ -20,18 +20,6 @@ export const ProductItem = ({
   features,
   onEdit
 }: Props) => {
-  const [isEditMode, setIsEditMode] = useState(false)
-
-  const handleEdit = () => {
-    setIsEditMode(true)
-  }
-  const handleSave = () => {
-    setIsEditMode(false)
-  }
-  const handleCancel = () => {
-    setIsEditMode(false)
-  }
-
   return (
     <div className="group relative z-0 -mx-6 p-6 first-of-type:-mt-6 first-of-type:rounded-t-3xl last-of-type:-mb-6 last-of-type:rounded-b-3xl from-2nd:border-t from-2nd:border-t-gray-100">
       <header className="mb-2.5">
@@ -51,20 +39,15 @@ export const ProductItem = ({
           <ItemList label="Features:" presentation="dot" items={features} />
         ) : null}
       </section>
-      <EditTrigger onClick={handleEdit} />
-      {isEditMode ? (
-        <EditProduct
-          onSave={handleSave}
-          onCancel={handleCancel}
-          id={id}
-          type={type}
-          name={name}
-          brand={brand}
-          sizes={sizes}
-          features={features}
-          onAdd={onEdit}
-        />
-      ) : null}
+      <EditProduct
+        id={id}
+        type={type}
+        name={name}
+        brand={brand}
+        sizes={sizes}
+        features={features}
+        onAdd={onEdit}
+      />
     </div>
   )
 }

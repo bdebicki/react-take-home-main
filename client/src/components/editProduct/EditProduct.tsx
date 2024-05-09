@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
-import { Button } from '../ui/Button'
+import React from 'react'
 import { ProductForm } from '../productForm/ProductForm'
 import { useEditProduct } from '../../api/apiActions'
 import type { Product } from '../../types/product'
+import { EditTrigger } from '../productList/EditTrigger'
+import { Dialog } from '../ui/Dialog'
 
 type Props = Product & {
-  onSave: () => void
-  onCancel: () => void
   onAdd: () => void
 }
 
@@ -18,17 +17,11 @@ export const EditProduct = ({
   features,
   sizes,
   style,
-  onAdd,
-  onSave,
-  onCancel
+  onAdd
 }: Props) => {
   const { isPending, mutate } = useEditProduct(() => {
     onAdd()
   })
-
-  const handleCancel = () => {
-    onCancel()
-  }
 
   const handleSave = () => {
     mutate({
@@ -40,14 +33,16 @@ export const EditProduct = ({
       features: [''],
       style: ''
     })
-    onSave()
   }
 
   return (
-    <ProductForm
-      onSave={handleSave}
-      onCancel={handleCancel}
-      isPending={isPending}
-    />
+    <Dialog
+      title="Edit product"
+      trigger={<EditTrigger />}
+      primaryAction={handleSave}
+      primaryBtnLabel={isPending ? 'Saving...' : 'Save changes'}
+    >
+      <ProductForm />
+    </Dialog>
   )
 }
