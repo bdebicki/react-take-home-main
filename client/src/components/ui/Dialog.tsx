@@ -33,12 +33,12 @@ export const Dialog = ({
   <DialogPrimitive.Root modal onOpenChange={onOpen} open={open}>
     <DialogPrimitive.Trigger asChild>{trigger}</DialogPrimitive.Trigger>
     <DialogPrimitive.Portal>
-      <DialogPrimitive.Overlay className="pointer-events-none fixed inset-0 z-10 bg-gray-900/50" />
+      <DialogPrimitive.Overlay className="pointer-events-none fixed inset-0 z-10 bg-gray-900/50 data-[state=open]:animate-overlayShow" />
       <DialogPrimitive.Content
         onPointerDownOutside={(e) => {
           e.preventDefault()
         }}
-        className="fixed left-1/2 top-1/2 z-20 flex max-h-[85vh] w-[50vw] max-w-2xl -translate-x-1/2 -translate-y-1/2 flex-col rounded-2xl bg-white p-6"
+        className="fixed left-1/2 top-1/2 z-20 flex max-h-[85vh] w-[50vw] max-w-2xl -translate-x-1/2 -translate-y-1/2 flex-col rounded-2xl bg-white p-6 data-[state=open]:animate-contentShow"
       >
         <DialogPrimitive.Title asChild>
           <Headline level={3} className="mb-4 pr-7">
