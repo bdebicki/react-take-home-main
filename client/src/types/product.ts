@@ -1,10 +1,10 @@
 export type SizeClothes = ['XS' | 'S' | 'M' | 'L' | 'XL']
 export type SizeFootwear = ['US 6' | 'US 7' | 'US 8' | 'US 9' | 'US 10']
 export type ProductType =
-  | 'footwear'
   | 'activewear'
-  | 'outwear'
   | 'dress'
+  | 'footwear'
+  | 'outerwear'
   | 'top'
 
 export type Product = {
@@ -16,6 +16,8 @@ export type Product = {
   features?: Array<string>
   style?: string
   colour?: string
+  materials?: string
+  neckline?: string
 }
 
 export type NewProduct = Omit<Product, 'id'>

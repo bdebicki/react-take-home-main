@@ -33,7 +33,9 @@ export const EditProduct = ({
     features,
     sizes,
     style: '',
-    colour: ''
+    colour: '',
+    materials: '',
+    neckline: ''
   })
   const [isOpen, setIsOpen] = useState(false)
   const { isPending, mutate, errors } = useEditProduct(() => {

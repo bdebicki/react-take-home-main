@@ -23,7 +23,9 @@ export const NewProduct = ({ onAdd }: Props) => {
     sizes: [],
     features: [],
     style: '',
-    colour: ''
+    colour: '',
+    materials: '',
+    neckline: ''
   })
   const [isOpen, setIsOpen] = useState(false)
   const { isPending, mutate, errors } = useAddProduct(() => {
