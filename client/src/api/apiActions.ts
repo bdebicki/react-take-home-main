@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { addProducts, fetchProducts, updateProduct } from './products'
-import { NewProduct, Product } from '../types/product'
+import type { NewProduct, Product } from '../types/product'
 
 export function useProductList() {
   const {
@@ -28,8 +28,8 @@ export function useAddProduct(onSuccess: () => void) {
 
 export function useEditProduct(onSuccess: () => void) {
   const { mutate, isPending } = useMutation({
-    mutationFn: (newProduct: Product) => {
-      return updateProduct(newProduct)
+    mutationFn: (updatedProduct: Product) => {
+      return updateProduct(updatedProduct)
     },
     onSuccess: onSuccess
   })

@@ -7,5 +7,5 @@ export const productType: Array<{ label: ProductType; value: ProductType }> = [
   { label: 'dress', value: 'dress' },
   { label: 'top', value: 'top' }
 ]
-export const clothesSize: SizeClothes = ['XS', 'S', 'M', 'L', 'XL']
-export const footwearSize: SizeFootwear = ['US 7', 'US 8', 'US 9', 'US 10']
+export const clothesSize = ['XS', 'S', 'M', 'L', 'XL']
+export const footwearSize = ['US 6', 'US 7', 'US 8', 'US 9', 'US 10']

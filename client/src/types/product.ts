@@ -1,5 +1,5 @@
 export type SizeClothes = ['XS' | 'S' | 'M' | 'L' | 'XL']
-export type SizeFootwear = ['US 7' | 'US 8' | 'US 9' | 'US 10']
+export type SizeFootwear = ['US 6' | 'US 7' | 'US 8' | 'US 9' | 'US 10']
 export type ProductType =
   | 'footwear'
   | 'activewear'
@@ -14,6 +14,7 @@ export type Product = {
   type: ProductType | undefined
   sizes?: [SizeClothes | SizeFootwear] | []
   features?: Array<string>
+  style?: string
 }
 
 export type NewProduct = Omit<Product, 'id'>

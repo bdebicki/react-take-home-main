@@ -18,21 +18,28 @@ export const MultiCheckbox = ({ options, value, onChange }: Props) => {
   }
 
   return (
-    <ul>
+    <ul className="flex flex-row gap-1">
       {options.map((option) => {
         const id = option.replace(' ', '-').toLowerCase()
         const isChecked = value.includes(option)
 
         return (
           <li key={id}>
-            <input
-              id={id}
-              type="checkbox"
-              value={option}
-              checked={isChecked}
-              onChange={() => handleCheckboxChange(option)}
-            />
-            <Tag as="label" htmlFor={id}>
+            <VisuallyHidden>
+              <input
+                id={id}
+                type="checkbox"
+                value={option}
+                checked={isChecked}
+                onChange={() => handleCheckboxChange(option)}
+              />
+            </VisuallyHidden>
+            <Tag
+              as="label"
+              isActive={isChecked}
+              htmlFor={id}
+              className="cursor-pointer"
+            >
               {option}
             </Tag>
           </li>

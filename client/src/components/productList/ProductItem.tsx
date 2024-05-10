@@ -1,10 +1,8 @@
-import React, { useState } from 'react'
-import { Pencil1Icon } from '@radix-ui/react-icons'
+import React from 'react'
 import type { Product } from '../../types/product'
 import { EditProduct } from '../editProduct/EditProduct'
 import { Headline } from '../ui/Headline'
 import { ItemList } from '../ui/ItemList'
-import { EditTrigger } from './EditTrigger'
 
 type Props = Product & {
   onEdit: () => void
@@ -25,7 +23,10 @@ export const ProductItem = ({
       <header className="mb-2.5">
         <ItemList
           presentation="pipe"
-          items={[type, <strong key={brand}>{brand}</strong>]}
+          items={[
+            type ? type : null,
+            brand ? <strong key={brand}>{brand}</strong> : null
+          ]}
           className="mb-0.5"
         />
         <Headline level={2}>{name}</Headline>
@@ -34,7 +35,6 @@ export const ProductItem = ({
         {sizes ? (
           <ItemList label="Available sizes:" presentation="tag" items={sizes} />
         ) : null}
-
         {features ? (
           <ItemList label="Features:" presentation="dot" items={features} />
         ) : null}

@@ -1,11 +1,12 @@
 import React from 'react'
 import { ProductForm } from '../productForm/ProductForm'
 import { useEditProduct } from '../../api/apiActions'
-import type { Product } from '../../types/product'
-import { EditTrigger } from '../productList/EditTrigger'
 import { Dialog } from '../ui/Dialog'
+import { useForm } from '../productForm/useForm'
+import { EditTrigger } from '../productList/EditTrigger'
+import type { FormData } from '../../types/form'
 
-type Props = Product & {
+type Props = FormData & {
   onAdd: () => void
 }
 
@@ -16,23 +17,28 @@ export const EditProduct = ({
   type,
   features,
   sizes,
-  style,
   onAdd
 }: Props) => {
+  const {
+    formData,
+    handleInputChange,
+    handleSelectChange,
+    handleMultiCheckboxChange
+  } = useForm({
+    id,
+    brand,
+    name,
+    type,
+    features,
+    sizes,
+    style: ''
+  })
   const { isPending, mutate } = useEditProduct(() => {
     onAdd()
   })
 
   const handleSave = () => {
-    mutate({
-      id: id,
-      name: `boczek-${new Date()}`,
-      brand: `boczek`,
-      type: 'footwear',
-      sizes: ['US 7'],
-      features: [''],
-      style: ''
-    })
+    mutate(formData)
   }
 
   return (
@@ -42,7 +48,12 @@ export const EditProduct = ({
       primaryAction={handleSave}
       primaryBtnLabel={isPending ? 'Saving...' : 'Save changes'}
     >
-      <ProductForm />
+      <ProductForm
+        formData={formData}
+        onInputChange={handleInputChange}
+        onSelectChange={handleSelectChange}
+        onMultiCheckboxChange={handleMultiCheckboxChange}
+      />
     </Dialog>
   )
 }
