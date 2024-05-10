@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ProductForm } from '../productForm/ProductForm'
 import { useEditProduct } from '../../api/apiActions'
 import { Dialog } from '../ui/Dialog'
@@ -32,24 +32,35 @@ export const EditProduct = ({
     type,
     features,
     sizes,
-    style: ''
+    style: '',
+    colour: ''
   })
+  const [isOpen, setIsOpen] = useState(false)
   const { isPending, mutate, errors } = useEditProduct(() => {
     onAdd()
+    setIsOpen(false)
   })
 
   const handleSave = () => {
     mutate(formData)
   }
+  const handleModalOpen = () => {
+    setIsOpen(true)
+  }
+  const handleCancel = () => {
+    setIsOpen(false)
+  }
 
   return (
     <Dialog
+      open={isOpen}
       onOpen={resetInitial}
       title="Edit product"
-      trigger={<EditTrigger />}
+      trigger={<EditTrigger onClick={handleModalOpen} />}
       primaryAction={handleSave}
-      isPrimaryDisabled={!name || !type}
       primaryBtnLabel={isPending ? 'Saving...' : 'Save changes'}
+      isPrimaryDisabled={!name || !type}
+      cancelAction={handleCancel}
     >
       <ProductForm
         errors={errors}

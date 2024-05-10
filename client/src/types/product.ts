@@ -15,6 +15,7 @@ export type Product = {
   sizes?: [SizeClothes | SizeFootwear] | []
   features?: Array<string>
   style?: string
+  colour?: string
 }
 
 export type NewProduct = Omit<Product, 'id'>

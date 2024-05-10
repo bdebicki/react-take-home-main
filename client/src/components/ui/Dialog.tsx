@@ -15,6 +15,7 @@ type Props = {
   cancelBtnLabel?: string
   cancelAction?: () => void
   onOpen?: () => void
+  open?: boolean
 }
 
 export const Dialog = ({
@@ -26,9 +27,10 @@ export const Dialog = ({
   primaryAction,
   cancelBtnLabel = 'Cancel',
   cancelAction,
-  onOpen
+  onOpen,
+  open
 }: Props) => (
-  <DialogPrimitive.Root modal onOpenChange={onOpen}>
+  <DialogPrimitive.Root modal onOpenChange={onOpen} open={open}>
     <DialogPrimitive.Trigger asChild>{trigger}</DialogPrimitive.Trigger>
     <DialogPrimitive.Portal>
       <DialogPrimitive.Overlay className="pointer-events-none fixed inset-0 z-10 bg-gray-900/50" />
@@ -56,6 +58,7 @@ export const Dialog = ({
         </footer>
         <DialogPrimitive.Close asChild>
           <IconButton
+            onClick={cancelAction}
             label="close"
             icon={<Cross2Icon />}
             className="absolute right-6 top-6"

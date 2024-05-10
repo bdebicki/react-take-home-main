@@ -14,18 +14,20 @@ export const ProductList = ({ isLoading, list, onEdit }: Props) => {
       {isLoading ? (
         <p>Loading in progress...</p>
       ) : (
-        list.map(({ id, brand, name, type, sizes, features }: Product) => (
-          <ProductItem
-            onEdit={onEdit}
-            id={id}
-            key={id}
-            name={name}
-            brand={brand}
-            type={type}
-            sizes={sizes}
-            features={features}
-          />
-        ))
+        list
+          .reverse()
+          .map(({ id, brand, name, type, sizes, features }: Product) => (
+            <ProductItem
+              onEdit={onEdit}
+              id={id}
+              key={id}
+              name={name}
+              brand={brand}
+              type={type}
+              sizes={sizes}
+              features={features}
+            />
+          ))
       )}
     </div>
   )
