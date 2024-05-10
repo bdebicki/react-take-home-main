@@ -1,76 +1,17 @@
 # SearchPilot technical challenge — Bartosz Dębicki
 
-## What is inside?
+Solution was prepared using ReactJS, TypeScript, TailwindCss. Communication with api is handled with react-query.
+Some component has been build with Radix UI primitives. For building Vite has been used.
 
-This project uses many tools like:
+### Commands
+`npm run dev` - run dev server with hot reload <br>
+`npm run test` - run tests <br>
+`npm run test:ui` - run ui interface for tests <br>
+`npm run lint` - run linter <br>
+`npm run typecheck` - run type checks <br>
 
-- [Vite](https://vitejs.dev)
-- [ReactJS](https://reactjs.org)
-- [TypeScript](https://www.typescriptlang.org)
-- [Vitest](https://vitest.dev)
-- [Testing Library](https://testing-library.com)
-- [Tailwindcss](https://tailwindcss.com)
-- [Eslint](https://eslint.org)
-- [Prettier](https://prettier.io)
-
-## Getting Started
-
-### Install
-
-Create the project.
-
-```bash
-npx degit joaopaulomoraes/reactjs-vite-tailwindcss-boilerplate my-app
-```
-
-Access the project directory.
-
-```bash
-cd my-app
-```
-
-Install dependencies.
-
-```bash
-pnpm install
-```
-
-Serve with hot reload at <http://localhost:5173>.
-
-```bash
-pnpm run dev
-```
-
-### Lint
-
-```bash
-pnpm run lint
-```
-
-### Typecheck
-
-```bash
-pnpm run typecheck
-```
-
-### Build
-
-```bash
-pnpm run build
-```
-
-### Test
-
-```bash
-pnpm run test
-```
-
-View and interact with your tests via UI.
-
-```bash
-pnpm run test:ui
-```
-
-## License
-
-This project is licensed under the MIT License.
+### What can be added or improved:
+- unit tests for components and hooks
+- integration tests for basic paths (for example get data from api and show items, adding new product, edit product)
+- adding / editing product properties style, colour, materials, neckline — i follow task description and ignore them
+- storybook for presentation of components/ui
