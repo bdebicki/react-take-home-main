@@ -62,7 +62,7 @@ export const ProductForm = ({
             </Field>
           ) : null}
           {features ? (
-            <Field label="Features">
+            <Field label="Features" asChild={false}>
               <MultiCheckbox
                 value={features.map((feature) => feature.toString())}
                 onChange={(options) =>
