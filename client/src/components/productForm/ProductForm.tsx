@@ -10,11 +10,13 @@ import {
   productType
 } from '../../constants/productValues'
 import { MultiCheckbox } from '../ui/MultiCheckbox'
-import type { FormData } from '../../types/form'
+import type { FetchErrors, FormData } from '../../types/form'
 import type { ProductType } from '../../types/product'
+import { Alert } from '../ui/Alert'
 
 type Props = {
   formData: FormData
+  errors?: FetchErrors
   onInputChange: (e: ChangeEvent<HTMLInputElement>) => void
   onSelectChange: (name: string, value: string) => void
   onMultiCheckboxChange: (name: string, selectedOptions: Array<string>) => void
@@ -22,12 +24,18 @@ type Props = {
 
 export const ProductForm = ({
   formData: { name, type, features, sizes, brand },
+  errors,
   onInputChange,
   onSelectChange,
   onMultiCheckboxChange
 }: Props) => {
   return (
     <Root className="flex flex-col gap-3">
+      {errors && errors.length > 0
+        ? errors.map(({ message }, index) => (
+            <Alert key={`error-${index}`}>{message}</Alert>
+          ))
+        : null}
       <Field label="Product name">
         <Input name="name" value={name} onChange={onInputChange} />
       </Field>

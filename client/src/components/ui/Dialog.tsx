@@ -50,11 +50,9 @@ export const Dialog = ({
               {cancelBtnLabel}
             </Button>
           </DialogPrimitive.Close>
-          <DialogPrimitive.Close asChild>
-            <Button onClick={primaryAction} isDisabled={isPrimaryDisabled}>
-              {primaryBtnLabel}
-            </Button>
-          </DialogPrimitive.Close>
+          <Button onClick={primaryAction} isDisabled={isPrimaryDisabled}>
+            {primaryBtnLabel}
+          </Button>
         </footer>
         <DialogPrimitive.Close asChild>
           <IconButton

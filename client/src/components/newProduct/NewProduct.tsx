@@ -24,7 +24,7 @@ export const NewProduct = ({ onAdd }: Props) => {
     features: [],
     style: ''
   })
-  const { isPending, mutate } = useAddProduct(() => {
+  const { isPending, mutate, errors } = useAddProduct(() => {
     onAdd()
   })
   const { name, type } = formData
@@ -43,6 +43,7 @@ export const NewProduct = ({ onAdd }: Props) => {
       isPrimaryDisabled={!name || !type}
     >
       <ProductForm
+        errors={errors}
         formData={formData}
         onInputChange={handleInputChange}
         onSelectChange={handleSelectChange}

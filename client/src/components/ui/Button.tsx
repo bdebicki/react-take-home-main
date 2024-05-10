@@ -14,7 +14,6 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
     { children, onClick, variant = 'primary', type = 'button', isDisabled },
     ref
   ) => {
-    console.log(isDisabled)
     const classNames = classnames(
       'h-9 rounded-md border border-indigo-700 px-4 py-1.5 text-sm font-light transition-colors',
       {

@@ -34,7 +34,7 @@ export const EditProduct = ({
     sizes,
     style: ''
   })
-  const { isPending, mutate } = useEditProduct(() => {
+  const { isPending, mutate, errors } = useEditProduct(() => {
     onAdd()
   })
 
@@ -52,6 +52,7 @@ export const EditProduct = ({
       primaryBtnLabel={isPending ? 'Saving...' : 'Save changes'}
     >
       <ProductForm
+        errors={errors}
         formData={formData}
         onInputChange={handleInputChange}
         onSelectChange={handleSelectChange}

@@ -1,6 +1,8 @@
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { addProducts, fetchProducts, updateProduct } from './products'
 import type { NewProduct, Product } from '../types/product'
+import { useState } from 'react'
+import { FetchErrors } from '../types/form'
 
 export function useProductList() {
   const {
@@ -16,23 +18,46 @@ export function useProductList() {
 }
 
 export function useAddProduct(onSuccess: () => void) {
-  const { mutate, isPending } = useMutation({
+  const [errors, setErrors] = useState<FetchErrors>(null)
+  const { mutate: fetchMutate, isPending } = useMutation({
     mutationFn: (newProduct: NewProduct) => {
       return addProducts(newProduct)
     },
-    onSuccess: onSuccess
+    onSuccess: (data) => {
+      if (data.error) {
+        setErrors(data.error.issues)
+      } else {
+        onSuccess()
+      }
+    }
   })
+  const mutate = (data: Product) => {
+    fetchMutate(data)
+    setErrors(null)
+  }
 
-  return { mutate, isPending }
+  return { mutate, isPending, errors }
 }
 
 export function useEditProduct(onSuccess: () => void) {
-  const { mutate, isPending } = useMutation({
+  const [errors, setErrors] = useState<FetchErrors>(null)
+  const { mutate: fetchMutate, isPending } = useMutation({
     mutationFn: (updatedProduct: Product) => {
       return updateProduct(updatedProduct)
     },
-    onSuccess: onSuccess
+    onSuccess: (data) => {
+      if (data.error) {
+        setErrors(data.error.issues)
+      } else {
+        onSuccess()
+      }
+    }
   })
 
-  return { mutate, isPending }
+  const mutate = (data: Product) => {
+    fetchMutate(data)
+    setErrors(null)
+  }
+
+  return { mutate, isPending, errors }
 }
