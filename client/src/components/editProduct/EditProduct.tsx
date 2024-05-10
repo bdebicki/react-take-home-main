@@ -48,6 +48,7 @@ export const EditProduct = ({
       title="Edit product"
       trigger={<EditTrigger />}
       primaryAction={handleSave}
+      isPrimaryDisabled={!name || !type}
       primaryBtnLabel={isPending ? 'Saving...' : 'Save changes'}
     >
       <ProductForm

@@ -9,7 +9,7 @@ export type ProductType =
 
 export type Product = {
   name: string
-  id: number
+  id?: number
   brand: string
   type: ProductType | undefined
   sizes?: [SizeClothes | SizeFootwear] | []

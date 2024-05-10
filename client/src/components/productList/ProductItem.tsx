@@ -32,10 +32,10 @@ export const ProductItem = ({
         <Headline level={2}>{name}</Headline>
       </header>
       <section className="flex flex-col gap-0.5">
-        {sizes ? (
+        {sizes && sizes?.length > 0 ? (
           <ItemList label="Available sizes:" presentation="tag" items={sizes} />
         ) : null}
-        {features ? (
+        {features && features?.length > 0 ? (
           <ItemList label="Features:" presentation="dot" items={features} />
         ) : null}
       </section>

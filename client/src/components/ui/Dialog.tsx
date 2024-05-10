@@ -9,6 +9,7 @@ type Props = {
   children: ReactNode
   title: string
   trigger: ReactElement
+  isPrimaryDisabled?: boolean
   primaryBtnLabel?: string
   primaryAction: () => void
   cancelBtnLabel?: string
@@ -20,6 +21,7 @@ export const Dialog = ({
   children,
   title,
   trigger,
+  isPrimaryDisabled,
   primaryBtnLabel = 'Ok',
   primaryAction,
   cancelBtnLabel = 'Cancel',
@@ -49,7 +51,9 @@ export const Dialog = ({
             </Button>
           </DialogPrimitive.Close>
           <DialogPrimitive.Close asChild>
-            <Button onClick={primaryAction}>{primaryBtnLabel}</Button>
+            <Button onClick={primaryAction} isDisabled={isPrimaryDisabled}>
+              {primaryBtnLabel}
+            </Button>
           </DialogPrimitive.Close>
         </footer>
         <DialogPrimitive.Close asChild>

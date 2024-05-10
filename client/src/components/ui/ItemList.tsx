@@ -31,7 +31,7 @@ export const ItemList = ({
       {label ? <span className="mr-1 text-gray-400">{label}</span> : null}
       <ul className="flex flex-wrap gap-x-2">
         {items.map((item: Item) => (
-          <li className={liClassNames} key={item?.toString()}>
+          <li className={liClassNames} key={`${label}-${item?.toString()}`}>
             {presentation === 'tag' ? <Tag>{item}</Tag> : item}
           </li>
         ))}

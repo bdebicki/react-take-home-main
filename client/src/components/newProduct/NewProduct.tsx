@@ -21,11 +21,13 @@ export const NewProduct = ({ onAdd }: Props) => {
     brand: '',
     type: undefined,
     sizes: [],
-    features: []
+    features: [],
+    style: ''
   })
   const { isPending, mutate } = useAddProduct(() => {
     onAdd()
   })
+  const { name, type } = formData
 
   const handleSave = () => {
     mutate(formData)
@@ -38,6 +40,7 @@ export const NewProduct = ({ onAdd }: Props) => {
       trigger={<Button>Add new product</Button>}
       primaryAction={handleSave}
       primaryBtnLabel={isPending ? 'Saving...' : 'Add product'}
+      isPrimaryDisabled={!name || !type}
     >
       <ProductForm
         formData={formData}

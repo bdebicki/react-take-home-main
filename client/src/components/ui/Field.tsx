@@ -28,7 +28,7 @@ export const Field = ({
 
   return (
     <FormField name={fieldName} className={fieldClassNames}>
-      <FormLabel htmlFor={fieldId} className="text-md font-light">
+      <FormLabel htmlFor={fieldId} className="text-base font-light">
         {label}
       </FormLabel>
       {asChild ? (
