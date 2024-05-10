@@ -1,6 +1,6 @@
 import React, { ReactElement, ReactNode } from 'react'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
-import { ButtonIcon, Cross2Icon } from '@radix-ui/react-icons'
+import { Cross2Icon } from '@radix-ui/react-icons'
 import { Button } from './Button'
 import { IconButton } from './IconButton'
 import { Headline } from './Headline'
@@ -13,6 +13,7 @@ type Props = {
   primaryAction: () => void
   cancelBtnLabel?: string
   cancelAction?: () => void
+  onOpen?: () => void
 }
 
 export const Dialog = ({
@@ -22,19 +23,25 @@ export const Dialog = ({
   primaryBtnLabel = 'Ok',
   primaryAction,
   cancelBtnLabel = 'Cancel',
-  cancelAction
+  cancelAction,
+  onOpen
 }: Props) => (
-  <DialogPrimitive.Root modal>
+  <DialogPrimitive.Root modal onOpenChange={onOpen}>
     <DialogPrimitive.Trigger asChild>{trigger}</DialogPrimitive.Trigger>
     <DialogPrimitive.Portal>
       <DialogPrimitive.Overlay className="pointer-events-none fixed inset-0 z-10 bg-gray-900/50" />
-      <DialogPrimitive.Content className="fixed left-1/2 top-1/2 z-20 max-h-[80vh] w-[50vw] max-w-96 -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-white p-6">
+      <DialogPrimitive.Content
+        onPointerDownOutside={(e) => {
+          e.preventDefault()
+        }}
+        className="fixed left-1/2 top-1/2 z-20 flex max-h-[85vh] w-[50vw] max-w-2xl -translate-x-1/2 -translate-y-1/2 flex-col rounded-2xl bg-white p-6"
+      >
         <DialogPrimitive.Title asChild>
           <Headline level={3} className="mb-4 pr-7">
             {title}
           </Headline>
         </DialogPrimitive.Title>
-        <section>{children}</section>
+        <section className="-mx-6 overflow-auto px-6">{children}</section>
         <footer className="mt-4 flex justify-end gap-4">
           <DialogPrimitive.Close asChild>
             <Button variant="secondary" onClick={cancelAction}>

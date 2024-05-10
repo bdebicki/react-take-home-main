@@ -32,8 +32,13 @@ export const useForm = (initialValues: FormData) => {
     []
   )
 
+  const resetInitial = () => {
+    setFormData(initialValues)
+  }
+
   return {
     formData,
+    resetInitial,
     handleInputChange,
     handleSelectChange,
     handleMultiCheckboxChange

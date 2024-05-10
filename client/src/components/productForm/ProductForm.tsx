@@ -5,6 +5,7 @@ import { Input } from '../ui/Input'
 import { Select } from '../ui/Select'
 import {
   clothesSize,
+  featureList,
   footwearSize,
   productType
 } from '../../constants/productValues'
@@ -40,6 +41,9 @@ export const ProductForm = ({
       </Field>
       {type ? (
         <>
+          <Field label="Brand">
+            <Input name="brand" onChange={onInputChange} value={brand} />
+          </Field>
           {sizes ? (
             <Field label="Sizes" asChild={false}>
               <MultiCheckbox
@@ -51,12 +55,15 @@ export const ProductForm = ({
           ) : null}
           {features ? (
             <Field label="Features">
-              <span>{features}</span>
+              <MultiCheckbox
+                value={features.map((feature) => feature.toString())}
+                onChange={(options) =>
+                  onMultiCheckboxChange('features', options)
+                }
+                options={featureList}
+              />
             </Field>
           ) : null}
-          <Field label="Brand">
-            <Input name="brand" onChange={onInputChange} value={brand} />
-          </Field>
         </>
       ) : null}
     </Root>

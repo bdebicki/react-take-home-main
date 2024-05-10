@@ -21,6 +21,7 @@ export const EditProduct = ({
 }: Props) => {
   const {
     formData,
+    resetInitial,
     handleInputChange,
     handleSelectChange,
     handleMultiCheckboxChange
@@ -43,6 +44,7 @@ export const EditProduct = ({
 
   return (
     <Dialog
+      onOpen={resetInitial}
       title="Edit product"
       trigger={<EditTrigger />}
       primaryAction={handleSave}

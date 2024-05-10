@@ -18,13 +18,13 @@ export const MultiCheckbox = ({ options, value, onChange }: Props) => {
   }
 
   return (
-    <ul className="flex flex-row gap-1">
+    <ul className="flex flex-row flex-wrap gap-1">
       {options.map((option) => {
         const id = option.replace(' ', '-').toLowerCase()
         const isChecked = value.includes(option)
 
         return (
-          <li key={id}>
+          <li key={id} className="h-[25px]">
             <VisuallyHidden>
               <input
                 id={id}

@@ -18,7 +18,7 @@ export const Tag = ({
 }: Props) => {
   const Component = as
   const classNames = classnames(
-    'rounded bg-gray-100 px-2 py-1 text-xs text-gray-800',
+    'whitespace-nowrap rounded bg-gray-100 px-2 py-1 text-xs text-gray-800',
     {
       'bg-indigo-200': isActive
     },

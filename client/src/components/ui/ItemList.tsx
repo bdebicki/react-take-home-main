@@ -29,14 +29,10 @@ export const ItemList = ({
   return (
     <div className="flex">
       {label ? <span className="mr-1 text-gray-400">{label}</span> : null}
-      <ul className="flex gap-2">
+      <ul className="flex flex-wrap gap-x-2">
         {items.map((item: Item) => (
           <li className={liClassNames} key={item?.toString()}>
-            {presentation === 'tag' ? (
-              <Tag key={item?.toString()}>{item}</Tag>
-            ) : (
-              item
-            )}
+            {presentation === 'tag' ? <Tag>{item}</Tag> : item}
           </li>
         ))}
       </ul>

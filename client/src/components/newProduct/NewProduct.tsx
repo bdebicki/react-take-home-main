@@ -12,6 +12,7 @@ type Props = {
 export const NewProduct = ({ onAdd }: Props) => {
   const {
     formData,
+    resetInitial,
     handleInputChange,
     handleSelectChange,
     handleMultiCheckboxChange
@@ -32,6 +33,7 @@ export const NewProduct = ({ onAdd }: Props) => {
 
   return (
     <Dialog
+      onOpen={resetInitial}
       title="Add new product"
       trigger={<Button>Add new product</Button>}
       primaryAction={handleSave}
