@@ -29,7 +29,9 @@ export const ItemList = ({
   return (
     <div className="flex">
       {label ? (
-        <span className="mr-1 font-light text-gray-400">{label}</span>
+        <span className="mr-1 hidden font-light text-gray-400 sm:block">
+          {label}
+        </span>
       ) : null}
       <ul className="flex flex-wrap gap-x-2">
         {items.map((item: Item) => (

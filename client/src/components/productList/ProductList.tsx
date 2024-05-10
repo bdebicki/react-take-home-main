@@ -10,7 +10,7 @@ type Props = {
 
 export const ProductList = ({ isLoading, list, onEdit }: Props) => {
   return (
-    <div className="overflow-hidden rounded-3xl border border-gray-100 bg-white p-6 shadow-3xl">
+    <div className="overflow-hidden border border-gray-100 bg-white p-6 shadow-3xl sm:rounded-3xl">
       {isLoading ? (
         <p>Loading in progress...</p>
       ) : (

@@ -38,7 +38,7 @@ export const Dialog = ({
         onPointerDownOutside={(e) => {
           e.preventDefault()
         }}
-        className="fixed left-1/2 top-1/2 z-20 flex max-h-[85vh] w-[50vw] max-w-2xl -translate-x-1/2 -translate-y-1/2 flex-col rounded-2xl bg-white p-6 data-[state=open]:animate-contentShow"
+        className="fixed left-1/2 top-1/2 z-20 flex max-h-[85vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 flex-col rounded-2xl bg-white p-6 data-[state=open]:animate-contentShow sm:w-[50vw] sm:max-w-2xl"
       >
         <DialogPrimitive.Title asChild>
           <Headline level={3} className="mb-4 pr-7">
@@ -46,7 +46,7 @@ export const Dialog = ({
           </Headline>
         </DialogPrimitive.Title>
         <section className="-mx-6 overflow-auto px-6">{children}</section>
-        <footer className="mt-4 flex justify-end gap-4">
+        <footer className="mt-4 flex flex-col justify-end gap-4 sm:flex-row">
           <DialogPrimitive.Close asChild>
             <Button variant="secondary" onClick={cancelAction}>
               {cancelBtnLabel}

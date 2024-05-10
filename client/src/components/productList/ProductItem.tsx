@@ -31,7 +31,7 @@ export const ProductItem = ({
         />
         <Headline level={2}>{name}</Headline>
       </header>
-      <section className="flex flex-col gap-0.5">
+      <section className="flex flex-col gap-2 sm:gap-0.5">
         {sizes && sizes?.length > 0 ? (
           <ItemList label="Available sizes:" presentation="tag" items={sizes} />
         ) : null}
