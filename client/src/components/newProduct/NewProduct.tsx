@@ -3,25 +3,31 @@ import { Button } from '../ui/Button'
 import { ProductForm } from '../productForm/ProductForm'
 import { useAddProduct } from '../../api/apiActions'
 import { Dialog } from '../ui/Dialog'
+import { useForm } from '../productForm/useForm'
 
 type Props = {
   onAdd: () => void
 }
 
 export const NewProduct = ({ onAdd }: Props) => {
+  const {
+    formData,
+    handleInputChange,
+    handleSelectChange,
+    handleMultiCheckboxChange
+  } = useForm({
+    name: '',
+    brand: '',
+    type: undefined,
+    sizes: [],
+    features: []
+  })
   const { isPending, mutate } = useAddProduct(() => {
     onAdd()
   })
 
   const handleSave = () => {
-    mutate({
-      name: `boczek-${new Date()}`,
-      brand: `boczek`,
-      type: 'footwear',
-      sizes: ['US 7'],
-      features: [''],
-      style: ''
-    })
+    mutate(formData)
   }
 
   return (
@@ -31,7 +37,12 @@ export const NewProduct = ({ onAdd }: Props) => {
       primaryAction={handleSave}
       primaryBtnLabel={isPending ? 'Saving...' : 'Add product'}
     >
-      <ProductForm />
+      <ProductForm
+        formData={formData}
+        onInputChange={handleInputChange}
+        onSelectChange={handleSelectChange}
+        onMultiCheckboxChange={handleMultiCheckboxChange}
+      />
     </Dialog>
   )
 }

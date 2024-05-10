@@ -11,7 +11,7 @@ type Props = {
 export const Button = forwardRef<HTMLButtonElement, Props>(
   ({ children, onClick, variant = 'primary', type = 'button' }, ref) => {
     const classNames = classnames(
-      'rounded-md border border-indigo-700 px-4 py-1.5 text-sm font-light transition-colors',
+      'h-9 rounded-md border border-indigo-700 px-4 py-1.5 text-sm font-light transition-colors',
       {
         'bg-indigo-500 text-white  hover:bg-indigo-600': variant === 'primary',
         'bg-transparent text-indigo-800 hover:bg-indigo-400 hover:text-white':
