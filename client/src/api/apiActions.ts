@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { addProducts, fetchProducts, updateProduct } from './products'
-import type { NewProduct, Product } from '../types/product'
+import type { NewProduct, Product, ProductType } from '../types/product'
 import { useState } from 'react'
 import { FetchErrors } from '../types/form'
 
@@ -20,7 +20,7 @@ export function useProductList() {
 export function useAddProduct(onSuccess: () => void) {
   const [errors, setErrors] = useState<FetchErrors>(null)
   const { mutate: fetchMutate, isPending } = useMutation({
-    mutationFn: (newProduct: NewProduct) => {
+    mutationFn: (newProduct: NewProduct<ProductType>) => {
       return addProducts(newProduct)
     },
     onSuccess: (data) => {
@@ -31,7 +31,7 @@ export function useAddProduct(onSuccess: () => void) {
       }
     }
   })
-  const mutate = (data: Product) => {
+  const mutate = (data: Product<ProductType>) => {
     fetchMutate(data)
     setErrors(null)
   }
@@ -42,7 +42,7 @@ export function useAddProduct(onSuccess: () => void) {
 export function useEditProduct(onSuccess: () => void) {
   const [errors, setErrors] = useState<FetchErrors>(null)
   const { mutate: fetchMutate, isPending } = useMutation({
-    mutationFn: (updatedProduct: Product) => {
+    mutationFn: (updatedProduct: Product<ProductType>) => {
       return updateProduct(updatedProduct)
     },
     onSuccess: (data) => {
@@ -54,7 +54,7 @@ export function useEditProduct(onSuccess: () => void) {
     }
   })
 
-  const mutate = (data: Product) => {
+  const mutate = (data: Product<ProductType>) => {
     fetchMutate(data)
     setErrors(null)
   }

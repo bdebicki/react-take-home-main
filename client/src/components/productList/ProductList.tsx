@@ -1,11 +1,11 @@
 import React from 'react'
 import { ProductItem } from './ProductItem'
-import { Product } from '../../types/product'
+import type { Product, ProductType } from '../../types/product'
 
 type Props = {
   onEdit: () => void
   isLoading: boolean
-  list: Array<Product>
+  list: Array<Product<ProductType>>
 }
 
 export const ProductList = ({ isLoading, list, onEdit }: Props) => {
@@ -16,18 +16,27 @@ export const ProductList = ({ isLoading, list, onEdit }: Props) => {
       ) : (
         list
           .reverse()
-          .map(({ id, brand, name, type, sizes, features }: Product) => (
-            <ProductItem
-              onEdit={onEdit}
-              id={id}
-              key={id}
-              name={name}
-              brand={brand}
-              type={type}
-              sizes={sizes}
-              features={features}
-            />
-          ))
+          .map(
+            ({
+              id,
+              brand,
+              name,
+              type,
+              sizes,
+              features
+            }: Product<ProductType>) => (
+              <ProductItem
+                onEdit={onEdit}
+                id={id}
+                key={id}
+                name={name}
+                brand={brand}
+                type={type}
+                sizes={sizes}
+                features={features}
+              />
+            )
+          )
       )}
     </div>
   )

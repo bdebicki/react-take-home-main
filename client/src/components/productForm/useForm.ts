@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react'
-import { FormData } from '../../types/form'
+import type { FormData } from '../../types/form'
+import { ProductTypeValues } from '../../types/product'
 
 export const useForm = (initialValues: FormData) => {
   const [formData, setFormData] = useState(initialValues)
@@ -7,7 +8,7 @@ export const useForm = (initialValues: FormData) => {
   const handleInputChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = event.target
-      setFormData((prevFormData) => ({
+      setFormData((prevFormData: FormData) => ({
         ...prevFormData,
         [name]: value
       }))
@@ -16,15 +17,25 @@ export const useForm = (initialValues: FormData) => {
   )
 
   const handleSelectChange = useCallback((name: string, value: string) => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value
-    }))
+    setFormData((prevFormData: FormData) => {
+      if (name === 'type') {
+        return {
+          ...prevFormData,
+          [name]: value as ProductTypeValues,
+          sizes: []
+        }
+      } else {
+        return {
+          ...prevFormData,
+          [name]: value
+        }
+      }
+    })
   }, [])
 
   const handleMultiCheckboxChange = useCallback(
     (name: string, selectedOptions: Array<string>) => {
-      setFormData((prevFormData) => ({
+      setFormData((prevFormData: FormData) => ({
         ...prevFormData,
         [name]: selectedOptions
       }))

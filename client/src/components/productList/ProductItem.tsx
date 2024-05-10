@@ -1,10 +1,10 @@
 import React from 'react'
-import type { Product } from '../../types/product'
+import type { Product, ProductType } from '../../types/product'
 import { EditProduct } from '../editProduct/EditProduct'
 import { Headline } from '../ui/Headline'
 import { ItemList } from '../ui/ItemList'
 
-type Props = Product & {
+type Props = Product<ProductType> & {
   onEdit: () => void
   hasSeparator?: boolean
 }

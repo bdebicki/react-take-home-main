@@ -1,6 +1,9 @@
-import type { ProductType } from '../types/product'
+import type { ProductTypeValues } from '../types/product'
 
-export const productType: Array<{ label: ProductType; value: ProductType }> = [
+export const productType: Array<{
+  label: ProductTypeValues
+  value: ProductTypeValues
+}> = [
   { label: 'activewear', value: 'activewear' },
   { label: 'dress', value: 'dress' },
   { label: 'footwear', value: 'footwear' },
@@ -30,7 +33,6 @@ export const featureList = [
   'Multiple pockets',
   'Racerback design',
   'Removable hood',
-  'Round neck',
   'Round neck',
   'Rubber sole',
   'Shock-absorbing sole',

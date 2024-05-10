@@ -11,7 +11,11 @@ import {
 } from '../../constants/productValues'
 import { MultiCheckbox } from '../ui/MultiCheckbox'
 import type { FetchErrors, FormData } from '../../types/form'
-import type { ProductType } from '../../types/product'
+import type {
+  ProductTypeValues,
+  SizeClothes,
+  SizeFootwear
+} from '../../types/product'
 import { Alert } from '../ui/Alert'
 
 type Props = {
@@ -44,7 +48,9 @@ export const ProductForm = ({
           name="type"
           options={productType}
           value={type}
-          onValueChange={(value: ProductType) => onSelectChange('type', value)}
+          onValueChange={(value: ProductTypeValues) =>
+            value !== undefined ? onSelectChange('type', value) : null
+          }
         />
       </Field>
       {type ? (
@@ -55,7 +61,9 @@ export const ProductForm = ({
           {sizes ? (
             <Field label="Sizes" asChild={false}>
               <MultiCheckbox
-                value={sizes.map((size) => size.toString())}
+                value={sizes.map((size: SizeClothes | SizeFootwear) =>
+                  size.toString()
+                )}
                 onChange={(options) => onMultiCheckboxChange('sizes', options)}
                 options={type === 'footwear' ? footwearSize : clothesSize}
               />
@@ -64,7 +72,7 @@ export const ProductForm = ({
           {features ? (
             <Field label="Features" asChild={false}>
               <MultiCheckbox
-                value={features.map((feature) => feature.toString())}
+                value={features.map((feature: string) => feature.toString())}
                 onChange={(options) =>
                   onMultiCheckboxChange('features', options)
                 }
