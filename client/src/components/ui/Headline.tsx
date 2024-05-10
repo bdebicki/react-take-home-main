@@ -21,5 +21,9 @@ export const Headline = ({ children, level = 1, className }: Props) => {
     className
   )
 
-  return <Component className={classNames}>{children}</Component>
+  return (
+    <Component className={classNames} role="heading">
+      {children}
+    </Component>
+  )
 }
